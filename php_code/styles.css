@@ -1,0 +1,60 @@
+@import './bootstrap/bootstrap.min.css';
+@import './bootstrap/bootstrap.css';
+@import './bootstrap/bootstrap-grid.css';
+@import './bootstrap/bootstrap-grid.min.css';
+
+.navbar {
+  background-color: rgba(26, 113, 177, 1);
+}
+.nav-link {
+  color: #BFDAF6 !important;
+}
+.nav-link:hover {
+  color: #F6FFFF !important;
+}
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  margin-right: 8px;
+}
+html, body{
+
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  background-repeat:no-repeat;
+  background: -webkit-linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  background: -moz-linear-gradient( 120deg, #a1c4fd 0%, #c2e9fb 100%);
+  background: -ms-linear-gradient( 120deg, #a1c4fd 0%, #c2e9fb 100%);
+  background: -o-linear-gradient( 120deg, #a1c4fd 0%, #c2e9fb 100%);
+  background: linear-gradient( 120deg, #a1c4fd 0%, #c2e9fb 100%);
+  animation: Gradient 15s ease infinite;
+  animation-play-state:running;
+}
+@keyframes Gradient{
+  0%{
+      background-position: 0% 50%
+  }
+  50%{
+      background-position: 100% 50%
+  }
+  100%{
+      background-position: 0% 50%
+  }
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(26, 113, 177, 1);
+  color: white;
+  text-align: center;
+}
