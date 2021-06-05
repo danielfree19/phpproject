@@ -16,7 +16,11 @@ function invalidUid($username) {
     return $result;
 }
 function invalidEmail($email) {
-    return !filter_var($email,FILTER_VALIDATE_EMAIL);
+    $result = false;
+    if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+        $result = true;
+    }
+    return $result;
 }
 
 function PwdMatch($pwd,$pwdre) {
