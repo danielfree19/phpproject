@@ -1,3 +1,8 @@
+
+<?php
+// Start the session
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 <head>
@@ -17,26 +22,17 @@
             header('Location: ./?path=home');
         }
         $adminpath = "./admin";
-        $DBHpath = "./includes/dbh.inc.php";
+        $DBHpath = "./includes/dbh.inc.php"; 
         $src = "assets/img/png/logo1.png";
         $logout = "includes/logout.inc.php";
         $funcFile = "./includes/genFun.inc.php";
         require "./menu/menu.php";        
-        include "./includes/dbh.inc.php";
         include_once './includes/cartitems.php';
-        if(!isset($_SESSION["cart"])&&isset($_SESSION["useruid"])){
-            $_SESSION["cart"]=array();
-            $sqlQ = "SELECT * FROM menu;";
-            $result = mysqli_query($conn, $sqlQ);
-            $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-            foreach($rows as $row){
-                $_SESSION["cart"][] = new items($row["id"],$row["name"],$row["price"]);
-            }
-        }
+        
         switch($_GET['path']){
             case "about-us":
-            include_once "./about-us.html";
-            break;
+                include_once "./about-us.html";
+                break;
             case "home":
                 include_once "./home.php";
                 break;

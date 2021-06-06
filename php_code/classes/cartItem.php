@@ -1,39 +1,33 @@
 <?php
 require_once "genFun.inc.php";
-class cart{
+class Cart{
 private $info;
-private $totalcost=0;
+private $totalcost;
 public $cart=array();
 public function __construct(){
-    $this->info = json_encode($_SESSION["cart"]);
-    if (!$this->info) {
-        $this->info = array();
-    }
-    for($i=0 ;$i<length($this->info);$i++){
-        
-    }
+        $this->info = json_encode($_SESSION["cart"]);
+        if (!$this->info) {
+            $this->info = array();
+        }
     
 }
-
 public function addItem_amount($pic,$name,$price,$amount){
-    $this->cart[] = new items($pic,$name,$price,$amount);
+    $this->cart[] = new CartItem($pic,$name,$price,$amount);
 }
-public function addItem($pic,$name,$price){
-    $flag = true;
-    foreach($this->cart as $item){
-        if($item->picGet() == $pic){
-            $item->addAmount();
-            $flag = false;
+ public function addItem($pic,$name,$price){
+        $flag = true;
+        foreach($this->cart as $item){
+            if($item->picGet() == $pic){
+                $item->addAmount();
+                $flag = false;
+            }
         }
-    }
     if($flag){
-        $this->cart[] = new items($pic,$name,$price);
+        $this->cart[] = new CartItem($pic,$name,$price);
     }
 }
 }
-
- 
-class items{
+class CartItem{
     private $pic;
     private $name;
     private $price;
@@ -88,5 +82,3 @@ class items{
 }
     
     
-
-

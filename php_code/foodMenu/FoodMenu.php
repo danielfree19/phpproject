@@ -1,12 +1,8 @@
 <?php 
 require_once "../includes/dbh.inc.php";
+require_once "../CRUD/CRUD.php";
 
-$result = mysqli_query($conn, "SELECT * FROM menu");
-
-$rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-
-
+$menuItems = readMenuFromDB();
 
 ?>
 <script>
@@ -30,7 +26,7 @@ $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
     </div>
           <div class="row" style="margin-top:20px;">
           <?php
-          foreach ($rows as $row) {
+          foreach ($menuItems as $row) {
               ?>  
           <div class="col-6 single-menu" style="padding: 5px;" >
             <img   src="../assets/img/Menu/<?php echo $row["id"];?>.jpg" value ="<?php echo $row["id"];?>"  class="pic_size" alt="">

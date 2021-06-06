@@ -1,10 +1,9 @@
 <?php
 
-$serverName = "127.0.0.1";
-$dbUsername = "root";
-$dbPass = "";
+$serverName = "danielfree19.Ddns.Net";
+$dbUsername = "arkadi";
+$dbPass = "danielfree99";
 $dbName = "phpProj";
-
 
 $conn = mysqli_connect($serverName,$dbUsername,$dbPass,$dbName);
 mysqli_query($conn,"SET NAMES utf8");

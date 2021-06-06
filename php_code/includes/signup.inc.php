@@ -8,8 +8,8 @@ if(isset($_POST["submit"])){
     $pwd=$_POST["pwd"];
     $pwdre=$_POST["pwdre"];
 
-    require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
+    require_once '../CRUD/CRUD.php';
 
     if(emptyInSi($name,$email,$username,$pwd,$pwdre)!==false){
         header("location: ../login/index.php?error=emptyinput");
@@ -32,7 +32,7 @@ if(isset($_POST["submit"])){
         exit();
     }
     
-    createUser($conn,$name,$email,$username,$pwd);
+    createUser($name,$email,$username,$pwd);
 }
 else{
     header("location: ../login/index.php");
