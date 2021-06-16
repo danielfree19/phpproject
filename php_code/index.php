@@ -1,3 +1,11 @@
+
+<?php
+// Start the session
+include_once "./includes/routes.php";
+routesSetup();
+include_once $_SERVER["path"]["cartitem"];
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 <head>
@@ -13,30 +21,21 @@
 </head>
 <body>
 <?php
+        
+        
+        //include_once "./classes/cartItem.php";
         if(!isset($_GET['path'])){
             header('Location: ./?path=home');
         }
-        $adminpath = "./admin";
-        $DBHpath = "./includes/dbh.inc.php";
-        $src = "assets/img/png/logo1.png";
-        $logout = "includes/logout.inc.php";
-        $funcFile = "./includes/genFun.inc.php";
+        
+        
         require "./menu/menu.php";        
-        include "./includes/dbh.inc.php";
-        include_once './includes/cartitems.php';
-        if(!isset($_SESSION["cart"])&&isset($_SESSION["useruid"])){
-            $_SESSION["cart"]=array();
-            $sqlQ = "SELECT * FROM menu;";
-            $result = mysqli_query($conn, $sqlQ);
-            $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-            foreach($rows as $row){
-                $_SESSION["cart"][] = new items($row["id"],$row["name"],$row["price"]);
-            }
-        }
+        //include_once './classes/cartitem.php';
+        
         switch($_GET['path']){
-            case "about-us":
-            include_once "./about-us.html";
-            break;
+            case "aboutus":
+                include_once "./about-us.php";
+                break;
             case "home":
                 include_once "./home.php";
                 break;

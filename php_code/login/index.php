@@ -15,29 +15,46 @@
 <body>
 <div>
 <?php
-        $adminpath = "";
-        $DBHpath = "../includes/dbh.inc.php";
-        $src = "../assets/img/png/logo1.png";
-        $logout = "../includes/logout.inc.php";
-        $funcFile = "../includes/genFun.inc.php";
-        require "../menu/menu.php";
+        include_once "../includes/routes.php";
+        routesSetupSec();
+        session_start();
+       //include_once "../classes/cartItem.php";
+       
+       require_once "../menu/menu.php";
+       if(!isset($_GET["path"])){
+           header("Location: ./?path=login");
+       }
     ?>
     </div>
 <div class="row">
-<div style="text-align: center;" class="col-6">
+    <?php
+    if(!isset($_SESSION["useruid"]) && $_GET["path"] == "login"){
+        ?>
+<div style="text-align: center;" class="col-12">
 <?php
-   if(!isset($_SESSION["useruid"])){
+   
       include_once "login.php";
-   }
+?>   
+<a href="./?path=signup">Sign-up</a>
+</div>
+
+<?php
+    }
 ?>
-</div>
-<div style="text-align: center;" class="col-6">
+<?php
+    if(!isset($_SESSION["useruid"]) && $_GET["path"] == "signup"||isset($_SESSION["admin"])){
+        ?>
+<div style="text-align: center;" class="col-12">
    <?php
-    if(!isset($_SESSION["useruid"])){
+  
       include_once "signup.php";
-      }
+  
    ?>
+   <a href="./?path=login">Login with existing account</a>
 </div>
+<?php
+    }
+?>
 </div>
 
 

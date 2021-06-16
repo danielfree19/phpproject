@@ -1,5 +1,4 @@
 var picad = [];
-
 var count = 1;//for pictures
 var x = setInterval(slideshow, 1000);
 // everytime this function is on it checks which picture is set right now and
@@ -16,18 +15,12 @@ class picsadd {
 	}
 }
 var r = 0;
-
 // arrow function
-
 window.onload = function onload() {
 	for (var i = 0; i < 22; i++) {
 		picad.push(new picsadd(i, './assets/img/jpg/' + i + '.jpg'));
 	}
 }
-
-
-
-
 //שורה שמתחילה את המצגת
 	function slideshow() {
 		r++;
@@ -36,19 +29,12 @@ window.onload = function onload() {
 			r = 0;
 		}
 	}
-
-function LoadNextPic() {
-	
+function LoadNextPic() {	
 		count++;
 		if (count == 22)
 			count = 1;
 		pic.src =  picad[count].address();
 }
-
-
-
-
-
 // everytime this function is on it checks which picture is set right now and goes 
 //back to the previous pic(if its on the first picture its goes to the last picture)
 function LoadPrevPic() {
