@@ -1,6 +1,9 @@
 
 <?php
 // Start the session
+include_once "./includes/routes.php";
+routesSetup();
+include_once $_SERVER["path"]["cartitem"];
 session_start();
 ?>
 <!DOCTYPE html>
@@ -18,20 +21,20 @@ session_start();
 </head>
 <body>
 <?php
+        
+        
+        //include_once "./classes/cartItem.php";
         if(!isset($_GET['path'])){
             header('Location: ./?path=home');
         }
-        $adminpath = "./admin";
-        $DBHpath = "./includes/dbh.inc.php"; 
-        $src = "assets/img/png/logo1.png";
-        $logout = "includes/logout.inc.php";
-        $funcFile = "./includes/genFun.inc.php";
+        
+        
         require "./menu/menu.php";        
-        include_once './includes/cartitems.php';
+        //include_once './classes/cartitem.php';
         
         switch($_GET['path']){
-            case "about-us":
-                include_once "./about-us.html";
+            case "aboutus":
+                include_once "./about-us.php";
                 break;
             case "home":
                 include_once "./home.php";

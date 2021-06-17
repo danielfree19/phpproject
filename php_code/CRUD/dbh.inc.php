@@ -1,8 +1,8 @@
 <?php
 
-$serverName = "danielfree19.Ddns.Net";
-$dbUsername = "arkadi";
-$dbPass = "danielfree99";
+$serverName = "127.0.0.1";
+$dbUsername = "root";
+$dbPass = "";
 $dbName = "phpProj";
 
 $conn = mysqli_connect($serverName,$dbUsername,$dbPass,$dbName);

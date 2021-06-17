@@ -1,9 +1,7 @@
 <?php
-
-    function importJSON($filename){
         header('Content-Type: text/html; charset=utf-8');
-        require_once "dbh.inc.php";
-        $jsondata = file_get_contents($filename,true);
+        require_once "../CRUD/dbh.inc.php";
+        $jsondata = file_get_contents('./a.json',true);
         $data = json_decode($jsondata, true);
         foreach ($data as $val) {
             $desc = $val["desc"];
@@ -19,4 +17,3 @@
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
         }
-    }

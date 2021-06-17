@@ -1,8 +1,8 @@
 <?php 
-require_once "../includes/dbh.inc.php";
 require_once "../CRUD/CRUD.php";
+require_once "../classes/menuItem.php";
+$menuItems = readMenuFromDB($conn);
 
-$menuItems = readMenuFromDB();
 
 ?>
 <script>
@@ -26,22 +26,22 @@ $menuItems = readMenuFromDB();
     </div>
           <div class="row" style="margin-top:20px;">
           <?php
-          foreach ($menuItems as $row) {
+         foreach ($menuItems as $row) {
               ?>  
           <div class="col-6 single-menu" style="padding: 5px;" >
-            <img   src="../assets/img/Menu/<?php echo $row["id"];?>.jpg" value ="<?php echo $row["id"];?>"  class="pic_size" alt="">
+            <img src="../assets/img/Menu/<?php echo $row->picGet(); ?>.jpg" value ="<?php echo $row->picGet(); ?>"  class="pic_size" alt="">
                 <div class="menu-content ">
-                <form method="post" action="<?php echo $foodpath?>">
-                    <h4 > <?php echo $row["name"];?>
-                    <span ><?php echo $row["price"]; ?> </span></h4>
-                    <p ><?php echo $row["description"];//food desc?> </p>
-                    <input name="id" value=<?php echo $row["id"];?> style="display:none;" >
-                    <button class="btn btn-primary" style="margin-top: 10px;" <?php //adding to busket?>>הוסף לסל</button>
-                </form>
+                
+                    <h4 > <?php echo $row->nameGet();?>
+                    <span ><?php echo $row->priceGet(); ?> </span></h4>
+                    <p ><?php echo $row->getDescription();//food desc?> </p>
+                    
+                    <a href="<?php echo ($_SERVER["path"]["items"]."?id=".$row->picGet()."&add=");?>"><button class="btn btn-primary" style="margin-top: 10px;" name="add" <?php //adding to busket?>>הוסף לסל</button></a>
+                
                 </div>
             </div>
             <?php
-          }?>
+         }?>
           </div>
   
     </div>

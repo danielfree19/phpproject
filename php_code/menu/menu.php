@@ -1,12 +1,15 @@
 <?php
 
+
+require_once $_SERVER["path"]["DBHpath"];
+
 ?>
 <nav class="navbar navbar-expand-lg navbar-light text-white">
 <?php
-require_once $funcFile;
+
 ?>
 <?php 
-require_once "$DBHpath";
+
 if (isset($_SESSION["useruid"])) {
     $info = array();
     $sqlQ = "SELECT userId FROM admin;";
@@ -17,34 +20,40 @@ if (isset($_SESSION["useruid"])) {
     foreach ($rows as $row) {
        if($row['userId']==$_SESSION["useruid"]){
            $flag = true;
+           $_SESSION["admin"]=true;
        }
     }
 }
 
 ?>
-<a class="navbar-brand text-white" routerLink="/home"></a>
+
     <!--Navigation Strip Items-->
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <img href="/php_proj/php_code/index.php" src="<?php echo $src?>" class="img-size" style="border-radius: 20px;" >
+        <img href="/index.php" src="<?php echo $_SERVER["path"]["src"]?>" class="img-size" style="border-radius: 20px;" >
         &nbsp;&nbsp;&nbsp;
         <div class="navbar-nav">
-            <a class="nav-item nav-link text" href='/php_proj/php_code/index.php' >בית</a>
-            <a class="nav-item nav-link text" href='/php_proj/php_code/foodMenu' >תפריט</a>
-            <a class="nav-item nav-link text" >עלינו בקצרה</a>
+            <a class="nav-item nav-link text" href='/index.php' >בית</a>
+            <a class="nav-item nav-link text" href='/foodMenu' >תפריט</a>
+            <a class="nav-item nav-link text" href= "<?php echo $_SERVER["path"]["aboutus"]?>">עלינו בקצרה</a>
             <?php 
             if(isset($_SESSION['useruid'])){
-                if($flag){
-                    echo "<a class='nav-item nav-link text' href='$adminpath'>דף אדמין</a>";   
+                if($flag){?>
+                    <a class='nav-item nav-link text' href='<?php echo $_SERVER["path"]["adminpath"]?>'>דף אדמין</a>
+                    <a class='nav-item nav-link text' href='/login'>יצירת משתמש חדש</a>
+                <?php 
                 }
-                echo "<a class='nav-item nav-link text'>פרופיל</a>";
-                echo "<a class='nav-item nav-link text' href='$logout'>התנתק</a>";
-                echo "<p class='nav-item nav-link text'>Hello, " . $_SESSION["useruid"] . "</p>";
-                
-            }
-            else{
-                echo "<a class='nav-item nav-link text' href='/php_proj/php_code/login/index.php'>התחבר</a>";
-            }
-            ?>
+                ?>
+                <a class='nav-item nav-link text' href='<?php echo $_SERVER["path"]["logout"]?>'>התנתק</a>
+                <p class='nav-item nav-link text'><?php echo "שלום, ".$_SESSION["useruid"] ?></p>
+                <?php 
+                }
+                            else{?>
+                <a class='nav-item nav-link text' href='/login'>התחבר</a>
+                <?php 
+                }
+                ?>
+                <span style='margin-left:20px;margin-right:20px;'></span>
+                <?php include_once $_SERVER["path"]["cart"];?>
         </div>
     </div>
     

@@ -1,32 +1,6 @@
 <?php
-require_once "genFun.inc.php";
-class Cart{
-private $info;
-private $totalcost;
-public $cart=array();
-public function __construct(){
-        $this->info = json_encode($_SESSION["cart"]);
-        if (!$this->info) {
-            $this->info = array();
-        }
-    
-}
-public function addItem_amount($pic,$name,$price,$amount){
-    $this->cart[] = new CartItem($pic,$name,$price,$amount);
-}
- public function addItem($pic,$name,$price){
-        $flag = true;
-        foreach($this->cart as $item){
-            if($item->picGet() == $pic){
-                $item->addAmount();
-                $flag = false;
-            }
-        }
-    if($flag){
-        $this->cart[] = new CartItem($pic,$name,$price);
-    }
-}
-}
+require_once $_SERVER["path"]["function"];
+include_once $_SERVER["path"]["DBHpath"];
 class CartItem{
     private $pic;
     private $name;
@@ -38,8 +12,6 @@ class CartItem{
         $this->price = $price;
         $this->amount = $amount;
     }
-    
-    
     public function nameSet($name){
         $this->name=$name;
     }
@@ -60,7 +32,6 @@ class CartItem{
     }
     public function addAmount(){
         $this->amount++;
-
     }
     public function decAmount(){
         if($this->amount!=1){

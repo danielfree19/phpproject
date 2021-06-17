@@ -8,7 +8,7 @@ class Items{
         $this->pic = $pic;
         $this->name = $name;
         $this->price = $price;
-        $this->amount = $description;
+        $this->description = $description;
     }
     
     

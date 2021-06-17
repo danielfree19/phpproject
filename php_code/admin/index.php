@@ -16,16 +16,16 @@
 <body>
 
 <?php
+        include_once "../includes/routes.php";
+        routesSetupSec();
+        include_once $_SERVER["path"]["cartitem"];
+        session_start();
+        //include_once "../classes/cartItem.php";
+      
+        require_once "../menu/menu.php";
         
-        $adminpath = "../admin";
-        $DBHpath = "../includes/dbh.inc.php";
-        $src = "../assets/img/png/logo1.png";
-        $logout = "../includes/logout.inc.php";
-        $funcFile = "../includes/genFun.inc.php";
-        require "../menu/menu.php";
-        include "../includes/dbh.inc.php";
                 
-        
+        include_once "./admin.php";
     ?>
 
 
@@ -35,7 +35,7 @@
 
 <footer class="footer" style="text-align: center;">
     <?php
-        require "../footer/footer.html";
+        require_once "../footer/footer.html";
     ?>
 </footer>
    

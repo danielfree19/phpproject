@@ -17,22 +17,19 @@
 <body>
 
 <?php
-        $foodpath = "../includes/cartitems.php";
-        $adminpath = "";
-        $DBHpath = "../includes/dbh.inc.php";
-        $src = "../assets/img/png/logo1.png";
-        $logout = "../includes/logout.inc.php";
-        $funcFile = "../includes/genFun.inc.php";
-        require "../menu/menu.php";
-        include "../includes/dbh.inc.php";
-
-        include "FoodMenu.php";
+        include_once "../includes/routes.php";
+        routesSetupSec();
+        include_once $_SERVER["path"]["cartitem"];
+        session_start();
+        require_once "../menu/menu.php";
+        
+        include_once "FoodMenu.php";
     ?>
 
 
 <footer class="footer" style="text-align: center;">
     <?php
-        require "../footer/footer.html";
+        require_once "../footer/footer.html";
     ?>
 </footer>
    

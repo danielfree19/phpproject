@@ -8,6 +8,7 @@ if(isset($_POST["submit"])){
     $pwd=$_POST["pwd"];
     $pwdre=$_POST["pwdre"];
 
+    require_once '../CRUD/dbh.inc.php';
     require_once 'functions.inc.php';
     require_once '../CRUD/CRUD.php';
 
